@@ -1,0 +1,9 @@
+exercice:
+#créez une application avec deux tables:
+admin(id,login,password)
+employee(ud,nom,prenom,salaire,grade)
+admin hérite d'employée mais sans relation
+on peut lister les admins , cherchez et authentifier par login+mdp
+on peut gérer les employée (CRUD)+chercher par id non et grade
+l'application doit offrir un CORS pour localhost:4200 (transactional) lecture et écriture
+tester votre back-end avec YARC ou postman
