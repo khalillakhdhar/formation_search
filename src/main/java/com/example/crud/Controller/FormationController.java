@@ -38,6 +38,19 @@ public Formation getFormationById(@PathVariable(value = "id") long idFormation)
 	return formationRepository.findById(idFormation).orElseThrow(() -> new
 			ResourceNotFoundException("Formation", "id", idFormation));
 }
+@GetMapping("/titre/{titre}")
+public List<Formation> getFormationByTitre(@PathVariable(value = "titre") String titre)
+{
+	return (List<Formation>) formationRepository.findByTitre(titre);
+
+
+}
+@GetMapping("/filter/{titre}/{formateur}")
+public List<Formation> getFormationBymultiple(@PathVariable(value = "titre") String titre,@PathVariable(value = "formateur") String formateur)
+{
+	return (List<Formation>) formationRepository.findByTitreAndFormateur(titre, formateur);
+
+}
 @DeleteMapping("/{id}")
 public ResponseEntity<?> deleteFormation(@PathVariable(value = "id") long idFormation)
 {
