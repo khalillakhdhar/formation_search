@@ -4,6 +4,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +37,14 @@ public Formation getFormationById(@PathVariable(value = "id") long idFormation)
 {
 	return formationRepository.findById(idFormation).orElseThrow(() -> new
 			ResourceNotFoundException("Formation", "id", idFormation));
+}
+@DeleteMapping("/{id}")
+public ResponseEntity<?> deleteFormation(@PathVariable(value = "id") long idFormation)
+{
+Formation formation=formationRepository.findById(idFormation).orElseThrow(() -> new
+		ResourceNotFoundException("Formation", "id", idFormation));	
+formationRepository.delete(formation);
+return ResponseEntity.ok().build();
 }
 
 }
